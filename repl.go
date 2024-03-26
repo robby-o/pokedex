@@ -15,22 +15,19 @@ type config struct {
 }
 
 func startRepl(cfg *config) {
-	// reader := bufio.NewScanner(os.Stdin)
 	rl, err := readline.New("Pokedex > ")
 	if err != nil {
 		panic(err)
 	}
 	defer rl.Close()
+
 	for {
-		// fmt.Print("Pokedex > ")
 		line, err := rl.Readline()
 		if err != nil {
 			break
 		}
-		// reader.Scan()
 
 		words := cleanInput(line)
-		// words := cleanInput(reader.Text())
 		if len(words) == 0 {
 			continue
 		}
