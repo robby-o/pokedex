@@ -13,7 +13,7 @@ func (c *Client) ListLocationAreas(pageURL *string) (LocationAreasResp, error) {
 		url = *pageURL
 	}
 
-	if val, ok := c.cache.Get(url); ok {
+	if val, exists := c.cache.Get(url); exists {
 		locationAreasResp := LocationAreasResp{}
 		err := json.Unmarshal(val, &locationAreasResp)
 		if err != nil {
